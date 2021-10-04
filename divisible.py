@@ -5,7 +5,10 @@ def is_divisible(num1, num2):
     :param num2: The divisor
     :return: True if num1 is evenly divisible by num2, false otherwise
     """
-
+    if num1 % num2 == 0:
+        return True
+    else:
+        return False
     pass
 
 
