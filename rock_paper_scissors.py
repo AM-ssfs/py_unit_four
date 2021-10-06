@@ -2,10 +2,18 @@ from random import randint
 
 
 def instructions():
+    """
+    tells user they are about to play rock paper scissors
+    :return:
+    """
     print("play rock paper scissors with me!")
 
 
 def get_input():
+    """
+    gets input and returns 1, 2, or 3 (rck, ppr, scrs)
+    :return:
+    """
     x = input("Rock, Paper or Scissors? ")
 
     if x.upper() == "ROCK" or x.upper() == "R" or x.upper() == "1":
@@ -19,12 +27,21 @@ def get_input():
 
 
 def get_gen():
+    """
+    gen random int 1-3, (inclusive)
+    :return:
+    """
     x = randint(1, 3)
     return x
 
 
 def who_wins(user, computer):
-    # 1 is rock, 2 is paper, 3 is scissors
+    """
+    fetches user and computer input, evaluates, then returns who wins
+    :param user:
+    :param computer:
+    :return:
+    """
     if user == 1:
         if computer == 1:
             return "tied"
@@ -47,7 +64,15 @@ def who_wins(user, computer):
         else:
             return "tied"
 
+
 def dialouge(user, computer, outcome):
+    """
+    actually prints who won
+    :param user:
+    :param computer:
+    :param outcome:
+    :return:
+    """
     rps = ["rock", "paper", "scissor"]
     print("you chose " + rps[user-1] + " and I chose " + rps[computer-1])
     print("you " + outcome)
