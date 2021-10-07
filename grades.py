@@ -1,10 +1,11 @@
+
 def points(grade, is_AP):
     score = 0
-    if grade > 94:
+    if grade >= 95:
         score = 4
-    elif grade > 85:
+    elif grade >= 86:
         score = 3
-    elif grade > 77:
+    elif grade >= 78:
         score = 2
     elif grade >= 70:
         score = 1
@@ -15,4 +16,9 @@ def points(grade, is_AP):
     return score
 
 
-points(76, True)
+def main():
+    pass
+
+
+if __name__ == '__main__':
+    main()

@@ -32,7 +32,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("You win!", rock_paper_scissors.who_wins(3, 2))
         self.assertEqual("It is a tie", rock_paper_scissors.who_wins(1, 1))
 
-    
+    def test_cost(self):
+        # self.assertEqual()
+        pass
 
 if __name__ == '__main__':
     unittest.main()
