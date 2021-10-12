@@ -2,7 +2,7 @@ def simplify_county(county):
     """
     simplifies here i don't have to check variations of spelling later
     :param county:
-    :return:
+    :return [age, county]:
     """
     county = str(county).upper()
     if county == "MONTGOMERY COUNTY" or county == "MONTGOMERY" or county == "MONT" or county == "MG" or county == "M":
@@ -42,7 +42,7 @@ def get_cost(age, county):
     the actual price evaluating is done here, returns final price as float
     :param age:
     :param county:
-    :return:
+    :return new_price:
     """
     base_price = 70
     new_price = 0
@@ -68,25 +68,26 @@ def get_cost(age, county):
         if county == "P":
             new_price = discount(new_price, 7.5)
 
-    if new_price:
-        return new_price
-
-    else:
-        return base_price
+    return new_price
 
 
 def format_cost(price):
     """
     turns the price into string and into proper currency format (ex. 52.80)
     check number of decimals and adds 0's or rounds to nearest hundredth if needed
+    :param price:
     :return:
     """
+
+    price = float(price)
+
     if price == -1:
         new_price = -1
 
-    elif price % 1 == 0:
-        new_price = price
-        new_price = str(new_price)+".00"
+    # this is unnecessary
+    # elif price % 1 == 0:
+        # new_price = price
+        # new_price = str(new_price)+"0"
 
     elif (price*10) % 1 == 0:
         # for some reason (price % 0.1) and variations weren't working so i modified it
@@ -94,13 +95,14 @@ def format_cost(price):
         new_price = str(new_price)+"0"
 
     elif (price*100) % 1 == 0:
+        # if it has the right number of decimals it doesn't change it
         new_price = price
 
     else:
-        # if it has too many decimal places, it rounds to nearest hundredth
+        # if it has too many decimal places, it rounds down to nearest hundredth
         new_price = price
         new_price *= 100
-        new_price = int(new_price)
+        new_price = int(new_price)  # rounds down
         new_price /= 100
 
     return str(new_price)
@@ -109,7 +111,7 @@ def format_cost(price):
 def main():
     age_price = get_age_county()
     final_price = format_cost(get_cost(age_price[0], age_price[1]))
-    print("your final price is: " + final_price)
+    print("your final price is: $" + final_price)
 
 
 if __name__ == '__main__':
