@@ -1,6 +1,6 @@
 def simplify_county(county):
     """
-    simplifies here so later i don't have to check variations of spelling
+    simplifies here i don't have to check variations of spelling later
     :param county:
     :return:
     """
@@ -78,6 +78,7 @@ def get_cost(age, county):
 def format_cost(price):
     """
     turns the price into string and into proper currency format (ex. 52.80)
+    check number of decimals and adds 0's or rounds to nearest hundredth if needed
     :return:
     """
     if price == -1:
@@ -88,6 +89,7 @@ def format_cost(price):
         new_price = str(new_price)+".00"
 
     elif (price*10) % 1 == 0:
+        # for some reason (price % 0.1) and variations weren't working so i modified it
         new_price = price
         new_price = str(new_price)+"0"
 
@@ -95,6 +97,7 @@ def format_cost(price):
         new_price = price
 
     else:
+        # if it has too many decimal places, it rounds to nearest hundredth
         new_price = price
         new_price *= 100
         new_price = int(new_price)
