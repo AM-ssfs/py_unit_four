@@ -23,7 +23,6 @@ def get_age_county():
     age = int(input("How old are you? "))
     county = simplify_county(input("what county are you from? "))   # simplifies here
     age_county = [age, county]
-    print(age_county)   # checks to see if this works
     return age_county   # returns them both together so i don't have to make different functions
 
 
@@ -46,44 +45,73 @@ def get_cost(age, county):
     :return:
     """
     base_price = 70
+    new_price = 0
 
     if age < 0:
         new_price = -1
-        return new_price
 
     elif age < 5:
         new_price = 0
-        return new_price
 
     elif county == "M":
         new_price = 60
 
         if age >= 65:
             new_price = discount(new_price, 50)
-            return new_price
-
-        else:
-            return new_price
 
     elif age < 14 and county == "H":
         new_price = discount(base_price, 18)
-        return new_price
 
     elif age >= 65:
         new_price = discount(base_price, 50)
 
         if county == "P":
             new_price = discount(new_price, 7.5)
-            return new_price
 
-        else:
-            return new_price
+    if new_price:
+        return new_price
+
+    else:
+        return base_price
+
+
+def format_cost(price):
+    """
+    turns the price into string and into proper currency format (ex. 52.80)
+    :return:
+    """
+    if price == -1:
+        new_price = -1
+
+    elif price % 1 == 0:
+        new_price = price
+        new_price = str(new_price)+".00"
+
+    elif (price*10) % 1 == 0:
+        new_price = price
+        new_price = str(new_price)+"0"
+
+    elif (price*100) % 1 == 0:
+        new_price = price
+
+    elif (price*1000) % 1 == 0:
+        new_price = price*100
+        int(new_price)
+        new_price /= 100
+
+
+    else:
+        print("probably broken?")
+
+    return str(new_price)
 
 
 def main():
     age_price = get_age_county()
     final_price = str(get_cost(age_price[0], age_price[1]))
     print("your final price is: " + final_price)
+    print(format_cost(float(final_price)))
+
 
 
 if __name__ == '__main__':
