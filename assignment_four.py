@@ -94,24 +94,19 @@ def format_cost(price):
     elif (price*100) % 1 == 0:
         new_price = price
 
-    elif (price*1000) % 1 == 0:
-        new_price = price*100
-        int(new_price)
-        new_price /= 100
-
-
     else:
-        print("probably broken?")
+        new_price = price
+        new_price *= 100
+        new_price = int(new_price)
+        new_price /= 100
 
     return str(new_price)
 
 
 def main():
     age_price = get_age_county()
-    final_price = str(get_cost(age_price[0], age_price[1]))
+    final_price = format_cost(get_cost(age_price[0], age_price[1]))
     print("your final price is: " + final_price)
-    print(format_cost(float(final_price)))
-
 
 
 if __name__ == '__main__':
