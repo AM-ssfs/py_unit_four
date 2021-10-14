@@ -101,11 +101,6 @@ def format_cost(price):
     if price == -1:
         new_price = -1
 
-    # this is unnecessary
-    # elif price % 1 == 0:
-        # new_price = price
-        # new_price = str(new_price)+"0"
-
     elif (price*10) % 1 == 0:
         # for some reason (price % 0.1) and variations weren't working so i modified it
         new_price = price
