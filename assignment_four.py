@@ -83,6 +83,9 @@ def get_cost(age, county):
         if county == "P":
             new_price = discount(new_price, 7.5)
 
+    else:
+        return base_price
+
     return new_price
 
 

@@ -1,8 +1,13 @@
 import unittest
 from assignment_four import format_cost
+from assignment_four import get_cost
 
 
 class MyTestCase(unittest.TestCase):
+    def test_get_cost(self):
+        self.assertEqual(70, get_cost(50, "H"))
+        self.assertEqual(-1, get_cost(-2, "Mont"))
+
     def test_format(self):
         self.assertEqual("60.00", format_cost(60))
         self.assertEqual("66.00", format_cost(66))
